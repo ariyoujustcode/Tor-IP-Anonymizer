@@ -3,11 +3,15 @@ import requests
 from stem import Signal
 from bs4 import BeautifulSoup
 from stem.control import Controller
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Define Tor proxy settings
 TOR_SOCKS_PROXY = "socks5h://localhost:9050"
 CONTROL_PORT = 9051
-CONTROL_PASSWORD = "REMOVED"  # Password
+CONTROL_PASSWORD = os.getenv("TOR_CONTROL_PASSWORD")  # Password
 
 proxies = {
     "http": TOR_SOCKS_PROXY,
